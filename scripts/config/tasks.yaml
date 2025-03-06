@@ -1,16 +1,15 @@
 read_pdf_task:
   description: >
-    Using the path {pdf_path}, access the proper PDF file,
-    so that its text can be returned.
+    Utilize the {pdf_path} path to access the correct PDF file, and return the text from it.
   expected_output: >
-    Return the brute text recieved from the tool.
+    Return the raw text recieved from the tool.
   agent: pdf_reader_agent
 
 analyze_task:
   description: >
-    Your purpose is to extract the most relevant information from the context text recieved.
+    Identify and extract the most relevant information from the text recieved.
   expected_output: >
-    A text that contains only the most relevant parts of the original text, without unnecessary details.
+    A text containing the most relevant parts of the given text in natural language.
   agent: analyzer_agent
   context: [read_pdf_task]
 
@@ -18,23 +17,15 @@ summarize_task:
   description: >
     Summarize the received text in a way that keeps it cohesive while making it as concise as possible.
   expected_output: >
-    A summary text generated from the original text.
+    A summarized text created from the given text in natural language.
   agent: summarizer_agent
   context: [analyze_task]
 
-format_task:
+blog_format_task:
   description: >
     Format the given summary to match the style of a blog post.
   expected_output: >
-    A Markdown-formatted text that includes a relevant title and subheadings to organize the content. 
-    The text should be cohesive and clearly formatted.
-  agent: formatter_agent
-  context: [summarize_task]
-
-quality_assurance_task:
-  description: >
-    Ensure that the quality of the produced blog post is clear and consistent with the original PDF.
-  expected_output: >
-    The final Markdown text after review.
-  agent: quality_assurance_agent
-  context: [format_task]
+    A text formated to markdown that includes a relevant title and well-structured subheadings to organize the content.
+    It must be cohesive, easy to read, and clearly formatted.
+  agent: blogger_agent
+  context: [blog_format_task]

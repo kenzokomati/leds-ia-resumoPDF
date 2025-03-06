@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 from crewai import Agent, Task, Crew
 from langchain_community.chat_models import ChatOpenAI
 import warnings
-from scripts.tools.reader_tool import PDFExtractorTool
+from tools.reader_tool import PDFExtractorTool
 
 # Warning control
 warnings.filterwarnings('ignore')
@@ -98,16 +98,18 @@ def main():
         process="sequential"
     )
 
-    # Iterate over the PDFs in the input directory and process them
+    # Inside the loop where you process each PDF
     for pdf_file in os.listdir(input_dir):
         if pdf_file.endswith(".pdf"):
-            pdf_path = os.path.abspath(os.path.join(input_dir, pdf_file))
+            pdf_path = os.path.join(input_dir, pdf_file)
             output_path = os.path.join(output_dir, f"{os.path.splitext(pdf_file)[0]}_summary.txt")
 
             print(f"\n📄 Processing: {pdf_file} at path: {pdf_path}")
 
             # Start the workflow
             try:
+                # Debug: Print the PDF path before passing it to the crew
+                print(f"DEBUG: PDF path before crew.kickoff(): {pdf_path}")
                 result = crew.kickoff(inputs={"pdf_path": pdf_path})
             except Exception as e:
                 print(f"❌ Error processing {pdf_file}: {e}")

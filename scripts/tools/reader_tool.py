@@ -1,6 +1,5 @@
 import os
 from crewai.tools import BaseTool
-# import pypdf2
 import fitz  # PyMuPDF
 
 class PDFExtractorTool(BaseTool):
@@ -10,6 +9,8 @@ class PDFExtractorTool(BaseTool):
     def extract_text_from_pdf(self, pdf_path: str) -> str:
         """Extracts text from a single PDF file using fitz (PyMuPDF)."""
         try:
+            # Debug: Print the PDF path received by the tool
+            print(f"DEBUG: PDF path inside extract_text_from_pdf(): {pdf_path}")
             doc = fitz.open(pdf_path)  # Open the PDF
             text = ""
             for page_num in range(len(doc)):  # Loop through all pages
@@ -21,4 +22,6 @@ class PDFExtractorTool(BaseTool):
 
     def _run(self, pdf_path: str) -> str:
         """Extracts text from the given PDF file path."""
+        # Debug: Print the PDF path received by _run()
+        print(f"DEBUG: PDF path inside _run(): {pdf_path}")
         return self.extract_text_from_pdf(pdf_path)
