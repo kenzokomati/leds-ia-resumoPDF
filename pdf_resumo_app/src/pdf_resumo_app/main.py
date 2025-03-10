@@ -15,12 +15,15 @@ def pdf_path_searcher(folder_path):
     return inputs
 
 def run():
-    relative_path_to_pdfs = "../data/pdfs"
-    os.makedirs(relative_path_to_pdfs, exist_ok=True)  # Ensure directory exists
+    relative_path_to_pdfs = "./data/pdfs"
+    # Ensure directory exists
+    os.makedirs(relative_path_to_pdfs, exist_ok=True)  
     
     pdf_files_path = pdf_path_searcher(relative_path_to_pdfs)
-    # output_dir = os.path.abspath("C:\Users\Erick (DEX)\Documents\GitHub\leds-ia-resumoPDF\data\outputs")  # Absolute path to outputs
-    # os.makedirs(output_dir, exist_ok=True)  # Ensure directory exists
+
+    output_dir = os.path.abspath("data/outputs")  
+    # Ensure directory exists
+    os.makedirs(output_dir, exist_ok=True)  
     
     try:
         for pdf_file_path in pdf_files_path:
@@ -28,15 +31,10 @@ def run():
 
             # Start the workflow
             try:
-                
                 # Extract file name without extension
                 file_name = os.path.splitext(os.path.basename(pdf_file_path))[0]
 
-                print(f"🚀 DEBUG - Tipo de pdf_file: {type(pdf_file_path)}, Valor: {pdf_file_path} \n File name: {file_name}")
-
                 inputs = {"pdf_path": pdf_file_path, "file_name": file_name}
-                
-                print(f"📄 Inputs: {inputs}")
 
                 result = ResumidorPdfs().crew().kickoff(inputs=inputs)
 

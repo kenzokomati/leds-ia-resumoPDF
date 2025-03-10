@@ -64,7 +64,7 @@ class ResumidorPdfs():
 		return Task(
 			config=self.tasks_config['blog_format_task'],
 			context=[self.summarize_task()],
-			output_file="C:/Users/Erick (DEX)/Documents/GitHub/leds-ia-resumoPDF/data/outputs/{file_name}.md"
+			output_file="data/outputs/{file_name}.md"
 		)
 	
 
