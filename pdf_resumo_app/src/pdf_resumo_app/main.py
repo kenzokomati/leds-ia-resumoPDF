@@ -2,10 +2,12 @@ import os
 from pdf_resumo_app.crew import ResumidorPdfs
 
 def pdf_path_searcher(folder_path):
+    # Function to retrieve all .pdf files from a given directory
     inputs = []
     folder_path = os.path.abspath(folder_path)  
 
     for filename in os.listdir(folder_path):
+        # If the file has a .pdf extension, add to inputs list
         if filename.lower().endswith(".pdf"): 
             file_path = os.path.abspath(os.path.join(folder_path, filename))  
             inputs.append(file_path)
@@ -13,13 +15,12 @@ def pdf_path_searcher(folder_path):
     return inputs
 
 def run():
-    # script_dir = os.path.dirname(os.path.abspath(__file__))
     relative_path_to_pdfs = "../data/pdfs"
-
-    # Ensure output directory exists
-    # os.makedirs(output_dir, exist_ok=True)
-
+    os.makedirs(relative_path_to_pdfs, exist_ok=True)  # Ensure directory exists
+    
     pdf_files_path = pdf_path_searcher(relative_path_to_pdfs)
+    output_dir = os.path.abspath("C:\Users\Erick (DEX)\Documents\GitHub\leds-ia-resumoPDF\data\outputs")  # Absolute path to outputs
+    os.makedirs(output_dir, exist_ok=True)  # Ensure directory exists
     
     try:
         for pdf_file_path in pdf_files_path:
@@ -27,11 +28,9 @@ def run():
 
             # Start the workflow
             try:
-                # Todo: Usar caminho Relativo
+                
                 # Extract file name without extension
                 file_name = os.path.splitext(os.path.basename(pdf_file_path))[0]
-
-                print(type(file_name))
 
                 print(f"🚀 DEBUG - Tipo de pdf_file: {type(pdf_file_path)}, Valor: {pdf_file_path} \n File name: {file_name}")
 
