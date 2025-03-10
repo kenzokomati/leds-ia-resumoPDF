@@ -1,121 +1,100 @@
-# Desafio IA - LEDS | Agentes Inteligentes para Leitura e Resumo de Documentos PDF
-*Bem-vindo!* 👋
+# 📄 ResumoPDF - Agentes Inteligentes para Leitura e Resumo de Documentos PDF
 
-Neste desafio, você terá a oportunidade de demonstrar que possui as habilidades necessárias para atuar no time de IA do laboratório.
+*Bem-vindo ao ResumoPDF!* 👋
 
-# Objetivo Geral
+Este projeto tem como objetivo desenvolver uma solução baseada em agentes utilizando o framework **CrewAI** para processar documentos em formato PDF. A solução gera resumos dos documentos lidos e apresenta o conteúdo em um formato adequado para publicação em um blog.
 
-Desenvolver uma solução baseada em agentes utilizando o framework **CrewaI** para processar documentos em formato PDF. A solução deve gerar resumos dos documentos lidos e apresentar o conteúdo em um formato adequado para publicação em um blog.
+## 🎯 Objetivo Geral
 
-# Contextualização
+Desenvolver uma aplicação que seja capaz de:
 
-Você foi contratado para criar um sistema inteligente de leitura e resumo de documentos PDF. O objetivo é construir uma solução modular composta por diferentes agentes, cada um responsável por uma etapa do processo. O sistema final deve ser capaz de:
+- 📖 Ler documentos PDF de forma eficiente.
+- 📝 Gerar resumos curtos e informativos.
+- 🖋️ Formatar o texto gerado no estilo de um post de blog.
 
-- Ler documentos PDF de forma eficiente.
-- Gerar resumos curtos e informativos.
-- Formatar o texto gerado no estilo de um post de blog.
+## 🛠️ Arquitetura de Agentes
 
-## Tarefas
+A aplicação é composta por diferentes agentes, cada um responsável por uma etapa do processo:
 
-### 1. Configuração e Arquitetura de Agentes no CrewaI
-Configure uma arquitetura de agentes no **CrewaI**, com papéis bem definidos para cada etapa do desafio:
+1. **Agente de Leitura de PDF**: Responsável por extrair o texto bruto do arquivo PDF.
+2. **Agente de Análise e Extração de Informação**: Identifica as informações mais importantes do texto.
+3. **Agente de Resumo**: Utiliza um modelo de linguagem (ex.: GPT) para criar resumos curtos e coerentes.
+4. **Agente de Formatação**: Formata o resumo no estilo de um post de blog, incluindo título, subtítulos e uma conclusão.
 
-- **Agente de Leitura de PDF:** Responsável por extrair o texto bruto do arquivo PDF.
-- **Agente de Análise e Extração de Informação:** Identifica as informações mais importantes do texto.
-- **Agente de Resumo:** Utiliza um modelo de linguagem (ex.: GPT) para criar resumos curtos e coerentes.
-- **Agente de Formatação:** Formata o resumo no estilo de um post de blog, incluindo título, subtítulos e uma conclusão.
+## 🚀 Como Executar o Projeto
 
-### 2. Implementação de Funções Específicas
-Crie funções que permitam:
+Siga os passos abaixo para configurar e executar o projeto em sua máquina:
 
-- Carregar múltiplos PDFs.
-- Processar textos longos em seções.
-- Garantir a coesão e fluidez do texto no resumo gerado.
+1. **Clone o repositório**:
 
-### 3. Integração e Comunicação entre Agentes
-Certifique-se de que os agentes se comuniquem eficientemente, passando os dados processados de um para o outro.
+   ```bash
+   git clone https://github.com/kenzokomati/leds-ia-resumoPDF.git
+   ```
 
-- Utilize **logs** ou **indicadores de progresso** para monitorar o desempenho dos agentes.
+2. **Navegue até o diretório do projeto**:
 
-### 4. Geração do Blog Post Final
-O blog deve conter:
+   ```bash
+   cd leds-ia-resumoPDF/pdf_resumo_app
+   ```
 
-- Um título relevante.
-- Subtítulos que organizem o conteúdo.
-- Texto coeso e formatado com clareza.
+3. **Instale as dependências**:
 
-## Material Complementar
-- [Multi-AI Agent Systems with CrewaI](https://www.deeplearning.ai/short-courses/multi-ai-agent-systems-with-crewai/)
-- [Practical Multi-AI Agents and Advanced Use Cases with CrewaI](https://www.deeplearning.ai/short-courses/practical-multi-ai-agents-and-advanced-use-cases-with-crewai/)
-- [ChatGPT Prompt Engineering for Developers](https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/)
-- [Criando um Blog Writer Multi-Agent System com CrewaI e Ollama](https://medium.com/the-ai-forum/create-a-blog-writer-multi-agent-system-using-crewai-and-ollama-f47654a5e1cd)
+   Certifique-se de ter o Python instalado em sua máquina. Então, instale as dependências necessárias:
 
-# O que deve ser entregue?
-- **Código fonte** do projeto.
-- **Documentação breve** explicando a arquitetura do sistema e o papel de cada agente.
-- **Exemplo de texto de blog** gerado a partir de pelo menos **3 documentos PDF**.
+   ```bash
+   uv pip install -r pyproject.toml
+   ```
 
-## Como entregar?
-1. Faça um **fork** do repositório. Nesse fork esperamos encontrar uma documentação completa da solução e a listagem dos diferenciais implementados.
-2. Abra um **pull request (PR)** do seu fork para o nome repositório com o seu nome como título. Assim conseguimos te localizar melhor e ver que você já finalizou o desafio!
+4. **Modifique a pasta de output**:
 
-## Critérios de Avaliação
-- **Funcionalidade:** O sistema deve realizar todas as etapas descritas (**leitura, resumo e criação do blog**).
-- **Qualidade do Resumo:** Os resumos devem ser **precisos** e capturar os pontos principais dos documentos.
-- **Formatação do Blog:** O texto final deve estar **bem formatado** e ser adequado para publicação.
-- **Código e Organização:** O código deve estar **bem organizado, modular e documentado**.
+   Substituir o path na variável "output_file" na task de formatação para markdown no arquivo crew.py 
 
-| Critério  | Valor | 
-|---|---|
-| Legibilidade do Código |  10  |
-| Documentação do código |  10  |
-| Documentação da solução |  10  |
-| Tratamento de Erros | 10 | 
-| Total | 40 |
+5. **Colocar chave e modelo de LLM**:
 
-## Diferenciais 
-Você pode **aumentar sua pontuação** implementando os seguintes diferenciais:
-
-| Item  | Pontos Ganhos | 
-|---|---|
-| Criar um [serviço](https://martinfowler.com/articles/microservices.html) com o problema |  30  |
-| Implementar Clean Code |  20  |
-| Implementar o padrão de programação da tecnologia escolhida |  20  |
-| Qualidade de [Código com SonarQube](https://about.sonarcloud.io/) |  15  |
-| Implementar integração com [Github Action](https://github.com/features/actions)  |  10  |
-| Implementar integração com Github Action + SonarQube |  10  |
-| Implementar usando Docker | 5 |
-| Total| 120 |
-
-A pontuação final será calculada somando os critérios obrigatórios e os diferenciais implementados corretamente.
-
-# Penalizações
-
-Você será desclassificado se:
-
-1. Enviar uma solução que não funcione.
-2. Não cumprir os critérios da seção **Avaliação**.
-3. For identificado plágio.
+   ```bash
+   MODEL= <LLM-MODEL>
+   LLM_API_KEY= <LLM-API-KEY>
+   ```   
    
-***Que a força esteja com você. Boa sorte!***
+6. **Execute a aplicação**:
 
-<div align="left">
-</div>
+   Utilize o comando abaixo para iniciar o processamento dos PDFs:
 
-###
+   ```bash
+   crewai run
+   ```
 
-<br clear="both">
+## 📂 Estrutura de Diretórios
 
-<div align="center">
-  <a href="https://www.linkedin.com/school/ledsifes" target="_blank">
-    <img src="https://img.shields.io/static/v1?message=LinkedIn&logo=linkedin&label=&color=0077B5&logoColor=white&labelColor=&style=for-the-badge" height="40" alt="linkedin logo"  />
-  </a>
-  <a href="https://www.instagram.com/ledsifes/" target="_blank">
-    <img src="https://img.shields.io/static/v1?message=Instagram&logo=instagram&label=&color=E4405F&logoColor=white&labelColor=&style=for-the-badge" height="40" alt="instagram logo"  />
-  </a>
-  <a href="https://www.youtube.com/@ledsifes/?sub_confirmation=1" target="_blank">
-    <img src="https://img.shields.io/static/v1?message=Youtube&logo=youtube&label=&color=FF0000&logoColor=white&labelColor=&style=for-the-badge" height="40" alt="youtube logo"  />
-  </a>
-</div>
+A estrutura principal do projeto é a seguinte:
 
-###
+```
+leds-ia-resumoPDF/
+├── data/
+│   ├── pdfs/
+│   └── outputs/
+├── pdf_resumo_app/
+│   ├── crew.py
+│   └── tools/
+│       └── pdf_text_reader.py
+├── config/
+│   ├── agents.yaml
+│   └── tasks.yaml
+├── requirements.txt
+└── README.md
+```
+
+- **data/pdfs/**: Diretório onde os arquivos PDF a serem processados devem ser colocados.
+- **data/outputs/**: Diretório onde os resumos gerados serão armazenados.
+- **pdf_resumo_app/crew.py**: Arquivo principal que define os agentes e tarefas utilizando o CrewAI.
+- **pdf_resumo_app/tools/pdf_text_reader.py**: Ferramenta para extração de texto dos PDFs.
+- **config/agents.yaml**: Configurações dos agentes.
+- **config/tasks.yaml**: Configurações das tarefas.
+
+## 📝 Configuração dos Agentes e Tarefas
+
+As configurações dos agentes e tarefas estão localizadas nos arquivos `agents.yaml` e `tasks.yaml`, respectivamente, dentro do diretório `config/`. Certifique-se de ajustar essas configurações conforme necessário para atender às especificidades do seu projeto.
+
+## 🛡️ Qualidade e Logs
+
+Para monitorar o desempenho dos agentes e garantir a qualidade dos resumos gerados, a aplicação utiliza logs e indicadores de progresso. Esses logs auxiliam na identificação de possíveis melhorias e na manutenção do sistema.
