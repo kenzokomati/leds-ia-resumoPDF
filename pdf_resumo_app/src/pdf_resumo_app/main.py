@@ -19,8 +19,8 @@ def run():
     os.makedirs(relative_path_to_pdfs, exist_ok=True)  # Ensure directory exists
     
     pdf_files_path = pdf_path_searcher(relative_path_to_pdfs)
-    output_dir = os.path.abspath("C:\Users\Erick (DEX)\Documents\GitHub\leds-ia-resumoPDF\data\outputs")  # Absolute path to outputs
-    os.makedirs(output_dir, exist_ok=True)  # Ensure directory exists
+    # output_dir = os.path.abspath("C:\Users\Erick (DEX)\Documents\GitHub\leds-ia-resumoPDF\data\outputs")  # Absolute path to outputs
+    # os.makedirs(output_dir, exist_ok=True)  # Ensure directory exists
     
     try:
         for pdf_file_path in pdf_files_path:
