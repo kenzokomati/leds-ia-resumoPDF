@@ -1,0 +1,25 @@
+[project]
+name = "pdf_resumo_app"
+version = "0.1.0"
+description = "pdf_resumo_app using crewAI"
+authors = [{ name = "Erick Komati", email = "kenzo.komati@gmail.com" }]
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "crewai-tools>=0.37.0",
+    "crewai[tools]>=0.102.0,<1.0.0",
+    "pypdf2>=3.0.1",
+]
+
+[project.scripts]
+pdf_resumo_app = "pdf_resumo_app.main:run"
+run_crew = "pdf_resumo_app.main:run"
+train = "pdf_resumo_app.main:train"
+replay = "pdf_resumo_app.main:replay"
+test = "pdf_resumo_app.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"
