@@ -1,0 +1,30 @@
+read_pdf_task:
+  description: >
+    Utilize the {pdf_path} path to access the correct PDF file, and return the text from it.
+  expected_output: >
+    Return the raw text recieved from the tool.
+  inputs:
+    "pdf_path": "The path to the PDF file."
+  agent: pdf_reader_agent
+
+analyze_task:
+  description: >
+    Identify and extract the most relevant information from the text recieved.
+  expected_output: >
+    A text containing the most relevant parts of the given text in natural language.
+  agent: analyzer_agent
+
+summarize_task:
+  description: >
+    Summarize the received text in a way that keeps it cohesive while making it as concise as possible.
+  expected_output: >
+    A summarized text created from the given text in natural language.
+  agent: summarizer_agent
+
+blog_format_task:
+  description: >
+    Format the given summary to match the style of a blog post.
+  expected_output: >
+    A text formated to markdown that includes a relevant title and well-structured subheadings to organize the content.
+    It must be cohesive, easy to read, and clearly formatted.
+  agent: blogger_agent
