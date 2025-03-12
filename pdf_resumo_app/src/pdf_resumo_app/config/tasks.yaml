@@ -26,5 +26,6 @@ blog_format_task:
     Format the given summary to match the style of a blog post.
   expected_output: >
     A text formated to markdown that includes a relevant title and well-structured subheadings to organize the content.
-    It must be cohesive, easy to read, and clearly formatted.
+    It must be cohesive, easy to read, and clearly formatted. Make sure that the content only includes the text in markdown format.
+    Do not try to envelop it in ```markdown```
   agent: blogger_agent
